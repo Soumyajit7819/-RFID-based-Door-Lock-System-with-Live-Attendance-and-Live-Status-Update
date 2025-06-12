@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IEEE Adgitm Rfid Attendance System</title>
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <!-- =====BOX ICONS===== -->
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous"/>
+        <link href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css" rel="stylesheet">
+        
+    </head>
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">IEEE ADGITM<span class="home__title-color"> Live Attendance System</span></a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#attendance" class="nav__link">Attendance Summary & Live Status</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            <section class="home bd-grid" id="home">
+                <div class="home__data">
+                    <div class="text-1">Learn, Create, Innovate & Collaborate at</div>
+                    <div class="text-2">IEEE ADGITM </div>
+                    <div class="text-3"><span class="home__title-color">Maker's Space</span></div>
+                    <br>
+                    <div class="text-4">Be an Aspiring </div>
+                    <div class="text-5"><span class="home__typing"></span></div>
+                    </br>
+
+                    <a href="#" class="button">Join Now</a>
+                </div>
+
+                <div class="home__social">
+                    <a href="https://www.linkedin.com/company/ieee-adgitm-student-branch/?originalSubdomain=in" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://discord.gg/hpe85fcA" class="home__social-icon"><i class='bx bxl-discord' ></i></a>
+                    <a href="https://www.instagram.com/ieeeadgitm/?hl=en" class="home__social-icon"><i class='bx bxl-instagram' ></i></a>
+                    <a href="https://www.facebook.com/ieeeadgitm/" class="home__social-icon"><i class='bx bxl-facebook' ></i></a>
+                </div>
+
+                <div class="home__img">
+                    <img src="assets/img/IEEE ADGITM.png" alt="">
+                </div>
+            </section>
+
+            <!--===== ABOUT =====-->
+            <section class="about section " id="about">
+                <h2 class="section-title">About</h2>
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        <img src="assets/img/Programming-bro.svg" alt="">
+                    </div>
+                    
+                    <div>
+                        <h2 class="about__subtitle">About The Attendance System</h2>
+                        <p class="about__text">This is a live RFID based Attendance System which would record the entry and exit times of IEEE members to IEEE Maker's Space. Each User's RFID Card is registered on the NodeMCU board with the help of RFID Card Reader. With the help of Google Firebase Realtime Database all entry and exit times are recorded which are then presented live on website</p>           
+                    </div>                                   
+                </div>
+            </section>
+
+            <!--===== attendance =====-->
+            <section class="attendance section" id="attendance">
+                <h2 class="section-title">Attendance Live Status</h2>
+
+                <div class="attendance__container bd-grid">   
+                    <div class="card">
+
+                        <div class="card-header">
+                            <i class="fa fa-table mr-1"></i>
+                            Attendence Summary 
+                        </div>
+              
+                        <div class="card-body">
+              
+                          <button type="button" class="btn btn-primary" id="export">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                          </button>
+              
+                          <div class="table-responsive">
+                              <table class="table table-bordered display responsive nowrap" id="buttonTable" data-order="[]">
+                                  <thead>
+                                      <tr>
+                                          <th>User ID Num.</th>
+                                          <th>IEEE 2022 </th>
+                                          <th>Date & Time</th>
+                                          <th>Status</th>
+                                      </tr>
+                                  </thead>
+              
+                                  <tbody>
+                                  </tbody>
+                              </table>
+                          </div>
+              
+                        </div>
+                      </div>
+              
+                      <div class="card mt-4">
+                          <div class="card-header">
+                              <i class="fa fa-table mr-1"></i>
+                              LIVE STATUS
+                          </div>
+              
+                          <div class="card-body users"></div>
+                      </div>       
+                    
+                </div>
+                <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+                <script src="extensions/export/bootstrap-table-export.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+                <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+                <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+                <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+                <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
+                <!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->
+
+                <!-- FIREBASE CONFIGURATIONS - Refer FIREBASE Credentials -->
+                <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+                <script>
+                // Initialize Firebase
+                var config = {
+                    apiKey: "-",
+                    authDomain: "",
+                    databaseURL: "",
+                    projectId: "",
+                    storageBucket: ".com",
+                    messagingSenderId: "",
+                    appId: "",
+                    measurementId: ""
+                };
+                firebase.initializeApp(config);
+                </script>
+
+                <script>
+                    $(function(){
+                    $('.users').html('No data available');
+                    document.getElementById("export").onclick = function() { exportCSV() }; 
+                
+                    function exportCSV() {
+                    //// export CSV
+                        console.log("exportCSV");
+                        $('#buttonTable').DataTable().button(0).trigger();
+                    } 
+
+                    var button_table = $('#buttonTable').DataTable({
+                        "ordering": false,
+                        "paging": false,
+                        buttons: [
+                        {
+                            extend: 'csv',
+                            filename: 'file_name',
+                            extension: '.csv'
+                        }
+                        ],
+                        initComplete: function() {
+                        
+                        $('.buttons-csv').hide();
+                    }
+                    });
+
+                    firebase.database().ref('/').on('value',function(snap){   
+                    if(snap.val().users){
+                        let obj= snap.val().users;
+                        console.log(obj);
+                        $('.users').html('');
+                        if(Object.keys(obj).length>0){
+                        Object.keys(obj).forEach(key=>{
+                            $('.users').append(`
+                            <div class="live">
+                                <img src="assets/img/Version control-bro.svg" width="150px" >
+                                <ul>
+                                    <li><h3>UID: ${key}</h3></li>
+                                    <li><img id="true${key}" width="50px" src="assets/img/tick.jpg"></li>
+                                    <li><img id="false${key}" width="50px" src="assets/img/cross.jpg"></li>
+                                </ul>
+                            </div>
+                            `);
+                            if(obj[key]==1){
+                            $('#true'+key).show();
+                            $('#false'+key).hide();
+                            }else{
+                            $('#true'+key).hide();
+                            $('#false'+key).show();
+                            }
+                        })
+                        }
+                    }
+                    if(snap.val().attendence){
+                        button_table.clear().draw();
+
+                        let arr= Object.values(snap.val().attendence);
+                        console.log(arr);  
+                        arr.forEach(function(elem,i){
+                            //console.log(table.row);
+                            var row= `<tr>
+                                <td>${elem.uid}</td>
+                                <td>${elem.id}</td>
+                                <td>${new Date(elem.time.slice(0, -1)).toLocaleString()}</td>
+                                <td id="state${new Date(elem.time).getTime()}"></td>                
+                            </tr>`;
+                            button_table.rows.add($(row)).draw();
+                            if(elem.status){
+                                //console.log(elem.status);
+                                $('#state'+new Date(elem.time).getTime()).html('<span class="badge badge-success">User Checked In</span>');
+                            }else{
+                                $('#state'+new Date(elem.time).getTime()).html('<span class="badge badge-danger">User Checked Out</span>');
+                            }
+                        })
+                        }
+                    })
+                    });
+                </script>
+            </section>
+            
+        </main>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <p class="footer__title">IEEE ADGITM</p>
+            <div class="footer__social">
+                <a href="https://www.facebook.com/ieeeadgitm/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+                <a href="https://www.instagram.com/ieeeadgitm/?hl=en" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+                <a href="https://twitter.com/ieeeadgitm" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://www.linkedin.com/company/ieee-adgitm-student-branch/?originalSubdomain=in" class="footer__icon"><i class='bx bxl-linkedin' ></i></a>
+                <a href="https://discord.gg/hpe85fcA" class="footer__icon"><i class='bx bxl-discord' ></i></a>
+            </div>
+            <p class="footer__copy">&#169; 2022-2023 IEEE Adgitm. All rigths reserved</p>
+        </footer>
+
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
